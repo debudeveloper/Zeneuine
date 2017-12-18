@@ -34,7 +34,7 @@ namespace Zenuine.API.Controllers
                 int userId = _user.SaveUser(model); 
             }
 
-            return Ok();
+            return Ok(); 
         }
         [Route("GetUser", Name = "GetUsers")]
         [HttpGet]
