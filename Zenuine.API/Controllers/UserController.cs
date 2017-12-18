@@ -31,7 +31,7 @@ namespace Zenuine.API.Controllers
                 {
                     return Content(HttpStatusCode.BadRequest,ServiceResponse.BadRequest);
                 }
-                int userId = _user.SaveUser(model);
+                int userId = _user.SaveUser(model); 
             }
 
             return Ok();
