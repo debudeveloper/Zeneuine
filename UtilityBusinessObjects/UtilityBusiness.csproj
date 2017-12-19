@@ -112,6 +112,10 @@
       <Project>{96c5ca6a-b2d7-4d10-8c84-118e1b88ca05}</Project>
       <Name>EntityObjects</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SmtpEmail\SmtpEmail.csproj">
+      <Project>{91B1BEDB-4143-42DC-BF12-E4309BF0B151}</Project>
+      <Name>SmtpEmail</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

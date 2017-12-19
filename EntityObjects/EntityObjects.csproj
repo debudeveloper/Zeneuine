@@ -70,9 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\ProductAttribute.cs" />
-    <Compile Include="Objects\Admin.cs" />
     <Compile Include="Objects\BaseEntity.cs" />
-    <Compile Include="Objects\Customer.cs" />
     <Compile Include="Objects\RoleMaster.cs" />
     <Compile Include="Objects\UserMaster.cs" />
     <Compile Include="Objects\UserRole.cs" />

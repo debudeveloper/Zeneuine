@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using UserModule.Models;
 
 namespace Zenuine.API.Common
 {
@@ -13,10 +12,10 @@ namespace Zenuine.API.Common
         public MappingProfile()
         {
             // Domain to Dto
-            Mapper.CreateMap<UserMaster, UserMasterDto>();
+           // Mapper.CreateMap<UserMaster, UserMasterDto>();
           
             // Dto to Domain
-            Mapper.CreateMap<UserMasterDto, UserMaster>();
+          //  Mapper.CreateMap<UserMasterDto, UserMaster>();
              }
     }
 }

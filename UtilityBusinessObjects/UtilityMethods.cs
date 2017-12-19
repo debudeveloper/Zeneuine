@@ -23,12 +23,13 @@ using System.ComponentModel;
 using System.IO;
 using System.Threading;
 using System.Globalization;
+using SmtpEmail;
 
 namespace UtilityBusiness
 {
-    public static class UtilityMethods
+    public class UtilityMethods 
     {
-        public static string DecodeFrom64(string encodedData)
+        public string DecodeFrom64(string encodedData)
         {
             try
             {
@@ -63,32 +64,60 @@ namespace UtilityBusiness
             }
         }
 
-        public static bool IsAscii(string value)
+        public  bool IsAscii(string value)
         {
             // ASCII encoding replaces non-ascii with question marks, so we use UTF8 to see if multi-byte sequences are there
             return Encoding.UTF8.GetByteCount(value) == value.Length;
         }
 
-        public static DateTime GetSqlMinDateTime()
+        public bool SendMail(string formEmail, string toEmail, string subjct, string mailBody)
+        {
+            MailMessage objeto_mail = new MailMessage();
+            SmtpClient client = new SmtpClient();
+            client.Port = 25;
+            client.Host = "smtp.gmail.com";
+            client.EnableSsl = true;
+            client.Credentials = new System.Net.NetworkCredential("deba.somu@gmail.com", "9002276670");
+            objeto_mail.From = new MailAddress(formEmail);
+            objeto_mail.To.Add(new MailAddress(toEmail));
+            objeto_mail.Subject = subjct;
+            objeto_mail.Body = mailBody;
+            try
+            {
+                client.Send(objeto_mail);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                //throw ex;
+            }
+
+
+            return false;
+        }
+
+
+
+        public DateTime GetSqlMinDateTime()
         {
             return DateTime.Parse(System.Data.SqlTypes.SqlDateTime.MinValue.ToString());
         }
-        public static string DescriptionAttr<T>(this T source)
-        {
-            if (source == null)
-                return "";
+      //  public  string DescriptionAttr<T>(this T source)
+        //{
+        //    if (source == null)
+        //        return "";
 
-            FieldInfo fi = source.GetType().GetField(source.ToString());
+        //    FieldInfo fi = source.GetType().GetField(source.ToString());
 
-            DescriptionAttribute[] attributes = (DescriptionAttribute[])fi.GetCustomAttributes(
-                typeof(DescriptionAttribute), false);
+        //    DescriptionAttribute[] attributes = (DescriptionAttribute[])fi.GetCustomAttributes(
+        //        typeof(DescriptionAttribute), false);
 
-            if (attributes != null && attributes.Length > 0) return attributes[0].Description;
-            else return source.ToString();
-        }
+        //    if (attributes != null && attributes.Length > 0) return attributes[0].Description;
+        //    else return source.ToString();
+        //}
 
  
-        public static Type GetTypeOfObject(string enumName)
+        public  Type GetTypeOfObject(string enumName)
         {
             var type = Type.GetType("EntityObjects.UtilityObjects." + enumName + "Enum, EntityObjects");
             if (type == null)
@@ -109,7 +138,7 @@ namespace UtilityBusiness
             }
             return type;
         }
-        public static string Base64DecodeStripped(string encodedData)
+        public  string Base64DecodeStripped(string encodedData)
         {
             try
             {
@@ -136,7 +165,7 @@ namespace UtilityBusiness
                 throw ex;
             }
         }
-        public static string Base64EncodeStripped(string data)
+        public  string Base64EncodeStripped(string data)
         {
             var concateString = Encoding.UTF8.GetBytes(data);
             return Convert.ToBase64String(concateString).TrimEnd('='); //remove padding (==)          
@@ -144,7 +173,7 @@ namespace UtilityBusiness
 
 
 
-        public static string CreateErrorMessage(Exception serviceException)
+        public  string CreateErrorMessage(Exception serviceException)
         {
             StringBuilder messageBuilder = new StringBuilder();
             try
@@ -166,7 +195,7 @@ namespace UtilityBusiness
 
         }
 
-        public static void LogFileWrite(string message, string path = null)
+        public  void LogFileWrite(string message, string path = null)
         {
             FileStream fileStream = null;
             StreamWriter streamWriter = null;
@@ -209,7 +238,7 @@ namespace UtilityBusiness
         }
 
 
-        public static string GenerateRandomString(int length = 4)
+        public string GenerateRandomString(int length = 4)
         {
             Random random = new Random();
             string str = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890";
@@ -221,8 +250,4 @@ namespace UtilityBusiness
         }
 
     }
-
-
-
-
 }

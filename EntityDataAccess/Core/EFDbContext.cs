@@ -15,9 +15,7 @@ namespace EntityDataAccess.Core
         }
 
         public  DbSet<UserMaster> Users { get; set; }
-        public DbSet<Customer> Customers { get; set; }
-        public DbSet<RoleMaster> RoleMasters { get; set; }
-        public DbSet<Admin> Admins { get; set; }
+              public DbSet<RoleMaster> RoleMasters { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
 
 

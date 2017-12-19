@@ -113,7 +113,7 @@
     <Compile Include="Common\Mapping\MappingProfile.cs" />
     <Compile Include="Common\ServiceResponse\ServiceResponse.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Dtos\CustomerDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -134,10 +134,6 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CustomerModule\CustomerModule.csproj">
-      <Project>{E351C656-4329-496A-8BE3-43E74902F073}</Project>
-      <Name>CustomerModule</Name>
-    </ProjectReference>
     <ProjectReference Include="..\EntityDataAccess\EntityDataAccess.csproj">
       <Project>{D8B260BB-C2E7-4376-8E76-A98DBEE8B926}</Project>
       <Name>EntityDataAccess</Name>
@@ -149,10 +145,6 @@
     <ProjectReference Include="..\SmtpEmail\SmtpEmail.csproj">
       <Project>{91b1bedb-4143-42dc-bf12-e4309bf0b151}</Project>
       <Name>SmtpEmail</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\UserModule\UserModule.csproj">
-      <Project>{3f9fba25-efac-4a15-a983-bce6b8d5f5bb}</Project>
-      <Name>UserModule</Name>
     </ProjectReference>
     <ProjectReference Include="..\UtilityBusinessObjects\UtilityBusiness.csproj">
       <Project>{3c352996-8ca6-41fd-ab30-95f73cc2c5e8}</Project>
