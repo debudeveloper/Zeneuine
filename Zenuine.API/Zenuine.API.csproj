@@ -113,7 +113,7 @@
     <Compile Include="Common\Mapping\MappingProfile.cs" />
     <Compile Include="Common\ServiceResponse\ServiceResponse.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
-    <Compile Include="Dtos\CustomerDto.cs" />
+    <Compile Include="Dtos\OutputCustomerDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -141,6 +141,10 @@
     <ProjectReference Include="..\EntityObjects\EntityObjects.csproj">
       <Project>{96C5CA6A-B2D7-4D10-8C84-118E1B88CA05}</Project>
       <Name>EntityObjects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules\Modules.csproj">
+      <Project>{B1661B82-A886-4B31-9989-6B0AC774AA5C}</Project>
+      <Name>Modules</Name>
     </ProjectReference>
     <ProjectReference Include="..\SmtpEmail\SmtpEmail.csproj">
       <Project>{91b1bedb-4143-42dc-bf12-e4309bf0b151}</Project>

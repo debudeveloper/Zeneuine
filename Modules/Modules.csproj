@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{96C5CA6A-B2D7-4D10-8C84-118E1B88CA05}</ProjectGuid>
+    <ProjectGuid>{B1661B82-A886-4B31-9989-6B0AC774AA5C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EntityObjects</RootNamespace>
-    <AssemblyName>EntityObjects</AssemblyName>
+    <RootNamespace>Modules</RootNamespace>
+    <AssemblyName>Modules</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,37 +29,22 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
-    <OutputPath>bin\Test\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'TestIndrani|AnyCPU'">
-    <OutputPath>bin\TestIndrani\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -69,23 +53,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Attributes\ProductAttribute.cs" />
-    <Compile Include="Objects\Admin.cs" />
-    <Compile Include="Objects\BaseEntity.cs" />
-    <Compile Include="Objects\Customer.cs" />
-    <Compile Include="Objects\RoleMaster.cs" />
-    <Compile Include="Objects\UserMaster.cs" />
-    <Compile Include="Objects\UserRole.cs" />
-    <Compile Include="Utility\UserType.cs" />
-    <Compile Include="Utility\EntityStatus.cs" />
-    <Compile Include="Utility\Role.cs" />
+    <Compile Include="Customer\Mapping\CustomerMappingProfile.cs" />
+    <Compile Include="Customer\Models\CustomerMapper.cs" />
+    <Compile Include="Customer\Service\CustomerService.cs" />
+    <Compile Include="Customer\Service\ICustomerService.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="Dtos\InputCustomerDto.cs" />
+    <Compile Include="Dtos\InputUserMasterDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="User\Mapping\UserMappgingProfile.cs" />
+    <Compile Include="User\Models\UserMapper.cs" />
+    <Compile Include="User\Services\IUserServices.cs" />
+    <Compile Include="User\Services\UserService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Admin\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EntityDataAccess\EntityDataAccess.csproj">
+      <Project>{D8B260BB-C2E7-4376-8E76-A98DBEE8B926}</Project>
+      <Name>EntityDataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EntityObjects\EntityObjects.csproj">
+      <Project>{96C5CA6A-B2D7-4D10-8C84-118E1B88CA05}</Project>
+      <Name>EntityObjects</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

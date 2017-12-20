@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 
 using EntityObjects.Objects;
+using Modules.Admin.Mapping;
+using Modules.User.Mapping;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,8 +23,8 @@ namespace Zenuine.API
             Mapper.Initialize(c =>
             {
                 c.AddProfile<MappingProfile>();
-               // c.AddProfile<UserMappgingProfile>();
-               // c.AddProfile<CustomerMappingProfile>();
+               c.AddProfile<UserMappgingProfile>();
+               c.AddProfile<CustomerMappingProfile>();
             });
         }
     }

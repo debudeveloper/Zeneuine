@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using EntityObjects.Objects;
+using Modules.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Zenuine.API.Dtos;
 
 namespace Zenuine.API.Common
 {
@@ -11,11 +13,14 @@ namespace Zenuine.API.Common
     {
         public MappingProfile()
         {
-            // Domain to Dto
-           // Mapper.CreateMap<UserMaster, UserMasterDto>();
-          
+           // Domain to Dto
+            Mapper.CreateMap<UserMaster, InputUserMasterDto>();
+            Mapper.CreateMap<OutputCustomerDto, InputUserMasterDto>();
+
             // Dto to Domain
-          //  Mapper.CreateMap<UserMasterDto, UserMaster>();
-             }
+            Mapper.CreateMap<InputUserMasterDto, OutputCustomerDto>();
+
+            Mapper.CreateMap<InputUserMasterDto, UserMaster>();
+        }
     }
 }
